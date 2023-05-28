@@ -13,4 +13,6 @@ builder.Services.AddHttpClient("ExampleBlazorAntd.ServerAPI",
 builder.Services.AddScoped(
     sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ExampleBlazorAntd.ServerAPI"));
 
+builder.Services.AddAntDesign();
+
 await builder.Build().RunAsync();
