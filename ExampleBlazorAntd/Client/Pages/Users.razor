@@ -1,6 +1,47 @@
 ﻿@page "/Users"
+@using ExampleBlazorAntd.Shared.Models
+@inject IMessageService MessageService
+@inject HttpClient HttpClient
 <h3>Users</h3>
 
+<Space Size="@AntSizeLDSType.Large" Direction="@DirectionVHType.Vertical" Style="width: 100%">
+    <SpaceItem>
+        <Search Placeholder="input search name" WrapperStyle="width: 250px"
+                OnSearch="OnSearchCallbackAsync"/>
+    </SpaceItem>
+    <SpaceItem>
+        <Table DataSource="@_users">
+            <GenerateColumns/>
+        </Table>
+    </SpaceItem>
+</Space>
+
 @code {
-    
+    private IReadOnlyList<UserRecord> _users = new List<UserRecord>();
+
+    private async Task OnSearchCallbackAsync(string searchName)
+    {
+        var key = $"updatable-{DateTime.Now.Ticks}";
+        var config = new MessageConfig()
+        {
+            Content = "Loading...",
+            Key = key,
+            Duration = 5
+        };
+
+#pragma warning disable CS4014
+        MessageService.Loading(config);
+#pragma warning restore CS4014
+        
+        _users = await HttpClient.GetFromJsonAsync<List<UserRecord>>($"api/User/findUsers?searchName={searchName}")
+                 ?? throw new InvalidOperationException();
+
+        config.Content = "Loaded";
+        config.Duration = 2;
+
+#pragma warning disable CS4014
+        MessageService.Success(config);
+#pragma warning restore CS4014
+    }
+
 }

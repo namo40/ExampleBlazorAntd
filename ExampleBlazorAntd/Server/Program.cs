@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.ResponseCompression;
+using ExampleBlazorAntd.Server.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
