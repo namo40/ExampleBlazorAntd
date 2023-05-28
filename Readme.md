@@ -1,10 +1,16 @@
 ﻿# Blazor WebAssembly + Asp.net Hosted + Ant Design
 
 목차
-1. [Ant Design을 Client 프로젝트에 설치](#ant-design을-client-프로젝트에-설치)
-2. [Ant Design Layout 적용하기](#ant-design-layout-적용하기)
-3. [Users 페이지 꾸며보기](#users-페이지-꾸며보기)
-4. [참고 자료](#참고-자료)
+1. [프로젝트 생성 하기 (Rider, .net 7 기준)](#프로젝트-생성-하기-rider-net-7-기준)
+2. [Ant Design을 Client 프로젝트에 설치](#ant-design을-client-프로젝트에-설치)
+3. [Ant Design Layout 적용하기](#ant-design-layout-적용하기)
+4. [Users 페이지 꾸며보기](#users-페이지-꾸며보기)
+5. [참고 자료](#참고-자료)
+
+## 프로젝트 생성 하기 (Rider, .net 7 기준)
+
+1. Blazor WebAssembly App을 생성 합니다.
+   ![create_project](./images/create_project.png)
 
 ## Ant Design을 Client 프로젝트에 설치
 
