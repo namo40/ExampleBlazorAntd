@@ -1,5 +1,30 @@
 ﻿@inherits LayoutComponentBase
 
-<main>
-    @Body
-</main>
+<Layout Style="min-height: 100vh; ">
+    <Sider Collapsible>
+        <div class="logo"/>
+        <Menu Theme="MenuTheme.Dark" DefaultSelectedKeys=@(new[] { "1" }) Mode="MenuMode.Inline">
+            <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
+                <Icon Type="@IconType.Outline.Home" Theme="outline"/>
+                <span>Home</span>
+            </MenuItem>
+            <MenuItem Key="2" RouterLink="Dashboard" RouterMatch="NavLinkMatch.Prefix">
+                <Icon Type="@IconType.Outline.Dashboard" Theme="outline"/>
+                <span>Dashboard</span>
+            </MenuItem>
+            <MenuItem Key="3" RouterLink="Users" RouterMatch="NavLinkMatch.Prefix">
+                <Icon Type="@IconType.Outline.User" Theme="outline"/>
+                <span>Users</span>
+            </MenuItem>
+        </Menu>
+    </Sider>
+    <Layout Class="site-layout">
+        <Header Class="site-layout-background" Style=" padding: 0 ;"></Header>
+        <Content Style="margin:0 16px;">
+            <div class="site-layout-background" style="margin-top:24px; padding: 24px; min-height: 360px">
+                @Body
+            </div>
+        </Content>
+        <Footer Style="text-align:center ">Ant Design ©2018 Created by Ant UED</Footer>
+    </Layout>
+</Layout>
